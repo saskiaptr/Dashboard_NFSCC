@@ -11,6 +11,10 @@ use App\Http\Controllers\TemplateSuratController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AppStateController;
 
+Route::options('/{any}', function () {
+    return response('', 204);
+})->where('any', '.*');
+
 Route::get('/', function () {
     return response()->json([
         'status' => 'API NFSCC jalan'
@@ -69,7 +73,3 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('events', EventController::class);
 });
-
-    Route::options('/{any}', function () {
-        return response('', 204);
-    })->where('any', '.*');
