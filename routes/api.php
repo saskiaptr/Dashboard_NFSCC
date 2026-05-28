@@ -69,3 +69,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('events', EventController::class);
 });
+
+    Route::options('/{any}', function () {
+        return response('', 204);
+    })->where('any', '.*');
