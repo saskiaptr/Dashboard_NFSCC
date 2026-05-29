@@ -1,3 +1,5 @@
+api.php
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -42,6 +44,7 @@ Route::get('/members/{member}', [MemberController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/members/archive-by-period', [MemberController::class, 'archiveByPeriod']);
+    Route::delete('/members/archive-by-period/{periode}', [MemberController::class, 'deleteArchiveByPeriod']);
 
     Route::apiResource('members', MemberController::class)->except(['index', 'show']);
 
